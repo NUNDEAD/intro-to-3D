@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    
+
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -34,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        readyToJump = true;
+
     }
 
     private void Update()
@@ -72,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
        
         if(grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+       
         else
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
@@ -96,5 +101,6 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+
 }
 
